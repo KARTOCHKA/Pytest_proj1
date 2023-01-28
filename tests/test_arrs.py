@@ -1,4 +1,15 @@
 from utils import arrs
+from utils import dicts
+
+data = {"vcs": "mercurial"}
+data1 = {}
+data2 = {"vcs": "mercurial"}
+
+
+def test_dicts():
+    assert dicts.get_val(data, "vcs") == "mercurial"
+    assert dicts.get_val(data1, "vcs") == "git"
+    assert dicts.get_val(data2, "vhc") == "git"
 
 
 def test_get():
