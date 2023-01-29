@@ -1,15 +1,18 @@
+import pytest
+
 from utils import arrs
 from utils import dicts
 
-data = {"vcs": "mercurial"}
-data1 = {}
-data2 = {"vcs": "mercurial"}
+
+@pytest.fixture
+def data():
+    return {"vcs": "mercurial"}
 
 
-def test_dicts():
+def test_dicts(data):
+    assert dicts.get_val({}, "vcs") == "git"
     assert dicts.get_val(data, "vcs") == "mercurial"
-    assert dicts.get_val(data1, "vcs") == "git"
-    assert dicts.get_val(data2, "vhc") == "git"
+    assert dicts.get_val(data, "HHS") == "git"
 
 
 def test_get():
